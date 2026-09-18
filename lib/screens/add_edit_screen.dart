@@ -68,7 +68,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
   @override
   Widget build(BuildContext context) {
     bool isEdit = widget.item != null;
-    ItemProvider provider = context.watch<ItemProvider>();
+    ItemProvider provider = context.read<ItemProvider>();
 
     return Scaffold(
       backgroundColor: const Color(0xFFF3F0EC), 
