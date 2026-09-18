@@ -3,15 +3,15 @@ import 'category_screen.dart';
 import 'about_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-  void _navigateToCategory(BuildContext context, String categoryName, String categoryId) {
+  const HomeScreen({super.key});
+
+  void _navigateToCategory(BuildContext context,String categoryName,String categoryId,) {
     Navigator.of(context).push(
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => 
-            CategoryScreen(categoryName: categoryName, categoryId: categoryId),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return FadeTransition(opacity: animation, child: child);
-        },
+      MaterialPageRoute(
+        builder: (context) => CategoryScreen(
+          categoryName: categoryName,
+          categoryId: categoryId,
+        ),
       ),
     );
   }
@@ -59,8 +59,8 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'أهلاً بك يا غالي! 👋',
-                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: Color(0xFF8B0000)), // غيرنا لون الترحيب ليطابق الشريط العلوي
+                  'أهلاً بك يا غالي! ',
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: Color(0xFF8B0000)), 
                 ),
                 const SizedBox(height: 20),
                 Container(
@@ -125,8 +125,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20), 
-            const SizedBox(height: 20), 
+                const SizedBox(height: 40), 
             Row(
               children: [              
                 Expanded(

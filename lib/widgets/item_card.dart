@@ -9,19 +9,19 @@ class ItemCard extends StatelessWidget {
   final int index;
 
   const ItemCard({
-    Key? key,
+    super.key,
     required this.item,
     required this.onEdit,
     required this.onDelete,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
       tween: Tween<double>(begin: 0, end: 1),
       duration: Duration(milliseconds: 400 + (index * 100)), 
-      curve: Curves.easeOutCubic,
+      curve: Curves.easeOutCubic,//ذا المنحنى يجعل الحركة تبدأ (بسرعة قوية) ثم تتباطأ (بنعومة شديدة) قبل أن تتوقف في مكانها
       builder: (context, double value, child) {
         return Transform.translate(
           offset: Offset(0, 50 * (1 - value)),
@@ -63,7 +63,7 @@ class ItemCard extends StatelessWidget {
                           width: 95,
                           height: 95,
                           fit: BoxFit.cover,
-                          errorBuilder: (c, o, s) => _buildPlaceholder(),
+                          errorBuilder: (_, __, ___) => _buildPlaceholder(),
                         )
                       : _buildPlaceholder(),
                 ),
